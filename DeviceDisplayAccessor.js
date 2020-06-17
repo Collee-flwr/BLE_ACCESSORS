@@ -43,4 +43,3 @@ function displayDevices(devices){
          document.querySelector('#found-devices').innerHTML = html ;
 
 }
-

@@ -1,3 +1,5 @@
+// Declare the device you wish to connect too's local advertised name
+var deviceName = "LED";
 
 exports.setup = function() {
 
@@ -33,12 +35,22 @@ exports.initialize = function () {
         }
 
         startScan(function(devices){
-                 //document.querySelector('#found-devices').innerHTML = result.length;
-                 self.send("dataOut", devices);
+
+             for (var key in devices)
+             {
+
+                 var device = devices[key];
+                 var name = device.name || 'no name';
+
+                   if (name == deviceName){
+                        evothings.ble.stopScan();
+                        self.send("dataOut", device);
+
+                     }
+             }
+                 //self.send("dataOut", devices);
+
         });
 
+
 };
-
-
-
-

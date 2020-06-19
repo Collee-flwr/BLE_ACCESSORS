@@ -39,20 +39,13 @@
 exports.setup = function() {
 
 
-
-
     var bleScan = this.instantiate('bleScan', 'bleAccessorLibrary/bleScanAccessor');
 
-    //var dataDisplay = this.instantiate('dataDisplay', 'bleAccessorLibrary/DeviceDisplayAccessor');
-
     var bleConnect = this.instantiate('bleConnect', 'bleAccessorLibrary/bleConnectAccessor');
-    var config = this. instantiate('deviceServices', 'bleAccessorLibrary/bleConfigAccessor');
-    var commPort = this. instantiate('commPort', 'bleAccessorLibrary/bleCommPortAccessor');
+    var config = this.instantiate('deviceServices', 'bleAccessorLibrary/bleConfigAccessor');
+    var commPort = this.instantiate('commPort', 'bleAccessorLibrary/bleCommPortAccessor');
     var sendData = this.instantiate('sendData', 'bleAccessorLibrary/bleSendDataAccessor');
     var getData = this.instantiate('sendData', 'bleAccessorLibrary/bleGetDataAccessor');
-
-//     //Ryan's headache
-//     this.connect(bleScan, 'dataOut', dataDisplay, 'dataIn');
 
     this.connect(bleScan, 'dataOut', bleConnect, 'dataIn');
     this.connect(bleConnect, 'dataOut', config, 'dataIn');
